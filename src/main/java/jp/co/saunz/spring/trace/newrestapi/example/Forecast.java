@@ -1,29 +1,31 @@
 package jp.co.saunz.spring.trace.newrestapi.example;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import tools.jackson.databind.PropertyNamingStrategies;
+import tools.jackson.databind.annotation.JsonNaming;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
 import java.util.TimeZone;
 
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public record Forecast(
         Double latitude,
         Double longitude,
-        @JsonProperty("generationtime_ms") Double generationtimeMs,
+        Double generationtimeMs,
         Integer utc_offset_seconds,
         TimeZone timezone,
-        @JsonProperty("timezone_abbreviation") TimeZone timezoneAbbreviation,
+        TimeZone timezoneAbbreviation,
         Double elevation,
-        @JsonProperty("daily_units") DailyUnits dailyUnits,
+        DailyUnits dailyUnits,
         Daily daily
 ) {
 
-    public record DailyUnits(String time, @JsonProperty("weather_code") String weatherCode) {
+    @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
+    public record DailyUnits(String time, String weatherCode) {
     }
 
-
-    public record Daily(List<LocalDate> time, @JsonProperty("weather_code") List<WeatherCode> weatherCode) {
+    @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
+    public record Daily(List<LocalDate> time, List<WeatherCode> weatherCode) {
 
     }
 }

@@ -1,9 +1,6 @@
 package jp.co.saunz.spring.trace.newrestapi.example;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-
-import java.util.Arrays;
 
 public enum WeatherCode {
     CLEAR_SKY(0, "Clear sky"),
@@ -46,10 +43,6 @@ public enum WeatherCode {
     @JsonValue
     public int getCode() {
         return code;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     @Override

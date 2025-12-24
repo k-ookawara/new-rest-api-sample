@@ -4,8 +4,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.service.annotation.GetExchange;
 import org.springframework.web.service.annotation.HttpExchange;
 
-import java.util.TimeZone;
-
 @HttpExchange(url = "https://api.open-meteo.com/v1/forecast")
 public interface MeteoClient {
 
